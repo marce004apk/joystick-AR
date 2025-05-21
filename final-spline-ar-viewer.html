@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spline AR-like Viewer</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: black;
+    }
+    iframe {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      border: none;
+    }
+    video#bg {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+    }
+  </style>
+</head>
+<body>
+  <video id="bg" autoplay muted playsinline></video>
+  <iframe src="https://my.spline.design/untitled-9d5b0f05a30cfbba3175fb6ad85d5de3/" allowfullscreen></iframe>
+
+  <script>
+    navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+      .then(stream => {
+        document.getElementById('bg').srcObject = stream;
+      });
+  </script>
+</body>
+</html>
